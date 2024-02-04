@@ -1,0 +1,10 @@
+version: "3"
+
+servises:
+  tests:
+    build: //тут вказуємо імедж (крапка означає шукати там же, де лежить докер компоус файл)
+    context: .
+  container_name: "playwright-tests"
+  environment:
+    - HTTP_CREDENTIALS_USERNAME = "guest"
+    - HTTP_CREDENTIALS_PASSWORD = "welcome2qauto"
