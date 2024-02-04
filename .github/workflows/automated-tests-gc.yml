@@ -1,10 +1,15 @@
-name: "Playwright Tests"
+name: Playwright Tests
 
 on: push
 
 jobs:
   tests:
     runs-on: ubuntu-latest
+    container: 
+      image: mcr.microsoft.com/playwright:v1.41.2-jammy
+        env: 
+          HTTP_CREDENTIALS_USERNAME: "guest"
+          HTTP_CREDENTIALS_PASSWORD: "welcome2qauto"
     steps:
       - name: "Checkout to tests repo"
         uses: actions/checkout@v4
@@ -12,10 +17,11 @@ jobs:
         run:  |
           cp '.env.example' '.env'  
       - name: "Run Playwright tests"  
-        run: |
-        HTTP_CREDENTIALS_USERNAME ="guest" HTTP_CREDENTIALS_PASSWORD ="welcome2qauto" docker-compose up --exit-code-from tests
+#        run: |
+#        HTTP_CREDENTIALS_USERNAME ="guest" HTTP_CREDENTIALS_PASSWORD ="welcome2qauto" docker-compose up --exit-code-from tests
+        run: npm tests
       - name: "upload test report"
-        if: failure() 
+        if: always() 
         uses: actions/upload-artifact@v3
         with:
           name: playwright-report
