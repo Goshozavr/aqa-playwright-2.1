@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: "Checkout to tests repo"
         uses: actions/checkout@v4
+      - name: "Copy env file"
+        run:  |
+          cp '.env.example' '.env'  
       - name: "Run Playwright tests"  
         run: |
         HTTP_CREDENTIALS_USERNAME ="guest" HTTP_CREDENTIALS_PASSWORD ="welcome2qauto" docker-compose up --exit-code-from tests

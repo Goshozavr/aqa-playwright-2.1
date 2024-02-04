@@ -2,12 +2,12 @@ version: "3"
 
 servises:
   tests:
-    build: //тут вказуємо імедж (крапка означає шукати там же, де лежить докер компоус файл)
+    build:
     context: .
   container_name: "playwright-tests"
   environment:
-    - HTTP_CREDENTIALS_USERNAME = "guest"
-    - HTTP_CREDENTIALS_PASSWORD = "welcome2qauto"
+    - HTTP_CREDENTIALS_USERNAME = ${HTTP_CREDENTIALS_USERNAME}
+    - HTTP_CREDENTIALS_PASSWORD = ${HTTP_CREDENTIALS_PASSWORD}
   netvork_mode: "host"
   volumes:
     - ./playwright-report:/playwright-tests/playwright-report
