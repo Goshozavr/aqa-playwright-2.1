@@ -13,13 +13,22 @@ jobs:
     steps:
       - name: "Checkout to tests repo"
         uses: actions/checkout@v4
+
       - name: "Copy env file"
         run:  |
           cp '.env.example' '.env'  
+
+      - name: "Set up node js"
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 20
+
+      - name: "Install dependencies"
+        run: npm ci
+
       - name: "Run Playwright tests"  
-#        run: |
-#        HTTP_CREDENTIALS_USERNAME ="guest" HTTP_CREDENTIALS_PASSWORD ="welcome2qauto" docker-compose up --exit-code-from tests
         run: npm tests
+
       - name: "upload test report"
         if: always() 
         uses: actions/upload-artifact@v3
