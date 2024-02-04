@@ -4,7 +4,7 @@ import { USERS } from "../../../src/data/users";
 import { CAR_BRANDS } from "../../../src/data/dict/carBrands";
 import { CAR_MODELS } from "../../../src/data/dict/carModels";
 
-test.describe.only("Create car", () => {
+test.describe("Create car", () => {
   let client;
   let carId;
   let brands;
