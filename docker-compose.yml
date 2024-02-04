@@ -10,4 +10,4 @@ servises:
     - HTTP_CREDENTIALS_PASSWORD = "welcome2qauto"
   netvork_mode: "host"
   volumes:
-    - ./playwright-report:/e2e/playwright-report
+    - ./playwright-report:/playwright-tests/playwright-report
